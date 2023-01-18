@@ -5,34 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joel's site</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
     <script src="js/script.js" defer></script>
 </head>
 <body>
-<!--     <div class="menu-icon" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    
-      <nav id="menu">
+  <!-- The Menu -->
+  <header>
+    <span class="material-symbols-outlined menu-icon" onclick="toggleMenu()">menu</span>
+  </header>
+  
+  <nav id="menu">
 
-        <ul>
-            <li>item 1</li>
-            <li>item 2</li>
-            <li>item 3</li>
-            <li>item 4</li>
-        </ul>
-      </nav>
-      <script>
-        function toggleMenu() {
-          var menu = document.getElementById("menu");
-          menu.classList.toggle("active");
-        }
-      </script> -->
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+    </ul>
+  </nav>
 
-    <p>crab.</p>
+  <div id="overlay"></div>
 
+  <!-- Page content -->
+  <p>crab.</p>
+
+  <!-- The spinning crab -->
+  <div id="crab">
     <script type="module">
       import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js';
       import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
@@ -45,7 +45,8 @@
         .01,
         1000
       );
-      var renderer = new THREE.WebGLRenderer();
+      
+      var renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
@@ -66,6 +67,27 @@
         renderer.render(scene, camera);
       }
       animate();
+
+      const setSize = (container, camera, renderer) => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+      };
+
+      class resizer {
+        constructor(container, camera, render) {
+          setSize(container, camera, renderer);
+
+          window.addEventListener("resize", () => {
+            // set the size again if a resize occurs
+            setSize(container, camera, renderer);
+          });
+        }
+      }
+      export { resizer };
     </script>
+  </div>
 </body>
 </html>
