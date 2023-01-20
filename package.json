@@ -16,10 +16,8 @@
     "url": "https://github.com/joelsinnott/portfolio/issues"
   },
   "homepage": "https://github.com/joelsinnott/portfolio#readme",
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  },
   "dependencies": {
-    "pnpm": "^7.25.0"
+    "pnpm": "^7.25.0",
+    "sass": "^1.57.1"
   }
 }

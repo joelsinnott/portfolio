@@ -7,87 +7,97 @@
     <title>Joel's site</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="pico-master/css/pico.min.css">
     <script src="js/script.js" defer></script>
 </head>
 <body>
   <!-- The Menu -->
   <header>
-    <span class="material-symbols-outlined menu-icon" onclick="toggleMenu()">menu</span>
+    <span id="icon-button" class="material-symbols-outlined menu-icon" onclick="toggleMenu()">menu</span>
+    <div id="nav-items">
+      <ul>
+        <li><a href="test">menu item</a></li>
+        <li><a href="test">menu item</a></li>
+        <li><a href="test">menu item</a></li>
+        <li><a href="test">menu item</a></li>
+      </ul>
+    </div>
   </header>
   
-  <nav id="menu">
+  <main>
+    <nav id="menu">
 
-    <ul>
-        <li>item 1</li>
-        <li>item 2</li>
-        <li>item 3</li>
-        <li>item 4</li>
-    </ul>
-  </nav>
+      <ul>
+          <li>item 1</li>
+          <li>item 2</li>
+          <li>item 3</li>
+          <li>item 4</li>
+      </ul>
+    </nav>
 
-  <div id="overlay"></div>
+    <div id="overlay"></div>
 
-  <!-- Page content -->
-  <p>crab.</p>
+    <!-- Page content -->
+    <p>crab.</p>
 
-  <!-- The spinning crab -->
-  <div id="crab">
-    <script type="module">
-      import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js';
-      import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
+    <!-- The spinning crab -->
+    <div id="crab">
+      <script type="module">
+        import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js';
+        import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
 
-      var scene = new THREE.Scene();
-      scene.background = new THREE.Color( 0xff0000 );
-      var camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth/window.innerHeight,
-        .01,
-        1000
-      );
-      
-      var renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+        var scene = new THREE.Scene();
+        scene.background = new THREE.Color( 0xff0000 );
+        var camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth/window.innerHeight,
+          .01,
+          1000
+        );
+        
+        var renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-      var loader = new GLTFLoader();
-      
-      var obj; 
-      loader.load("static/scene.gltf", function(gltf) {
-        obj = gltf.scene;
-        scene.add(gltf.scene);
-      });
+        var loader = new GLTFLoader();
+        
+        var obj; 
+        loader.load("static/scene.gltf", function(gltf) {
+          obj = gltf.scene;
+          scene.add(gltf.scene);
+        });
 
-      var light = new THREE.HemisphereLight(0xffffff, 0x000000, 5);
-      scene.add(light);
-      camera.position.set(0,25,300);
-      function animate() {
-        requestAnimationFrame(animate);
-        scene.rotation.y += 0.01;
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      const setSize = (container, camera, renderer) => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-      };
-
-      class resizer {
-        constructor(container, camera, render) {
-          setSize(container, camera, renderer);
-
-          window.addEventListener("resize", () => {
-            // set the size again if a resize occurs
-            setSize(container, camera, renderer);
-          });
+        var light = new THREE.HemisphereLight(0xffffff, 0x000000, 5);
+        scene.add(light);
+        camera.position.set(0,25,300);
+        function animate() {
+          requestAnimationFrame(animate);
+          scene.rotation.y += 0.01;
+          renderer.render(scene, camera);
         }
-      }
-      export { resizer };
-    </script>
-  </div>
+        animate();
+
+        const setSize = (container, camera, renderer) => {
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+
+          renderer.setSize(container.clientWidth, container.clientHeight);
+          renderer.setPixelRatio(window.devicePixelRatio);
+        };
+
+        class resizer {
+          constructor(container, camera, render) {
+            setSize(container, camera, renderer);
+
+            window.addEventListener("resize", () => {
+              // set the size again if a resize occurs
+              setSize(container, camera, renderer);
+            });
+          }
+        }
+        export { resizer };
+      </script>
+    </div>
+  </main>
 </body>
 </html>
