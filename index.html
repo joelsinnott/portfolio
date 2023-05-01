@@ -8,64 +8,12 @@
     <link rel="stylesheet" href="style.css">
     <script src="js/script.js" defer></script>
 </head>
-<body>
-<!--     <div class="menu-icon" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    
-      <nav id="menu">
-
-        <ul>
-            <li>item 1</li>
-            <li>item 2</li>
-            <li>item 3</li>
-            <li>item 4</li>
-        </ul>
-      </nav>
-      <script>
-        function toggleMenu() {
-          var menu = document.getElementById("menu");
-          menu.classList.toggle("active");
-        }
-      </script> -->
-
-    <p>crab.</p>
-
-    <script type="module">
-      import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js';
-      import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
-
-      var scene = new THREE.Scene();
-      scene.background = new THREE.Color( 0xff0000 );
-      var camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth/window.innerHeight,
-        .01,
-        1000
-      );
-      var renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
-      var loader = new GLTFLoader();
-      
-      var obj; 
-      loader.load("static/scene.gltf", function(gltf) {
-        obj = gltf.scene;
-        scene.add(gltf.scene);
-      });
-
-      var light = new THREE.HemisphereLight(0xffffff, 0x000000, 5);
-      scene.add(light);
-      camera.position.set(0,25,300);
-      function animate() {
-        requestAnimationFrame(animate);
-        scene.rotation.y += 0.01;
-        renderer.render(scene, camera);
-      }
-      animate();
-    </script>
-</body>
+  <body>
+    <p>Hello. I'm Joel, a designer in Zürich, Switzerland.</p>
+    <p>You can learn a bit more about me <a href="about.html">here</a>.</p><br>
+    <p>Here are some projects I've done</p>
+    <a href="project1-zkb.html"><p>ZKB mobile banking app</p></a>
+    <a href="project2-innosolv.html"><p>innosolv AG</p></a>
+    <a href="project3-BAV.html"><p>BAV incident analytics tool</p></a>
+  </body>
 </html>
