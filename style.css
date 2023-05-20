@@ -22,7 +22,18 @@ html {
 
 @media screen and (max-width: 800px) {
   .folio-img-container img{
-    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.joel-image {
+  width: 400px;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .joel-image {
+    width: 100%;
   }
 }
 
