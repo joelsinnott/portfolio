@@ -17,6 +17,13 @@ html {
 
 .folio-img-container img{
   max-width: 800px;
+  height: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .folio-img-container img{
+    max-width: 100%;
+  }
 }
 
 .folio-img {
