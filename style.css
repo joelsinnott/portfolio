@@ -2,10 +2,6 @@ html {
   font-family: helvetica;
 }
 
-p {
-  line-height: 0.7rem;
-}
-
 .spacer {
   height: 50px;
   width: 100%;
@@ -17,6 +13,19 @@ p {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+}
+
+.folio-img-container img{
+  max-width: 800px;
+}
+
+.folio-img {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 7px;
+}
+
+.text-container {
+  max-width: 600px;
 }
 
 .image-container::-webkit-scrollbar {
