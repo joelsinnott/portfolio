@@ -11,7 +11,7 @@ p, a, li{
   font-weight: 800;
 }
 
-body {
+body.bg-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(static/img/bliss.jpg);
   background-size: cover;
   background-position: center center;
@@ -32,11 +32,11 @@ body {
 }
 
 .folio-img-container img{
-  max-width: 800px;
+  max-width: 1200px;
   height: auto;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .folio-img-container img{
     width: 100%;
   }
@@ -54,7 +54,6 @@ body {
 }
 
 .folio-img {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 7px;
 }
 
